@@ -47,3 +47,40 @@ def request_loader(request):
     username = request.form.get('username')
     user = User.query.filter_by(username=username).first()
     return user if user else None
+
+class ClaimData(db.Model):
+    """
+    Create a donors table
+    """
+    __tablename__='claims'
+    id = db.Column(db.Integer, primary_key=True)
+    PATIENT_ID = db.Column(db.String(60))
+    CLAIM_ID = db.Column(db.String(60))
+    Pvd = db.Column(db.String(60))
+    CLM_Start_DT = db.Column(db.String(60))
+    CLM_End_DT = db.Column(db.String(60))
+    Diagnosis = db.Column(db.String(60))
+    ICD10_Diagnosis = db.Column(db.String(60))
+    Claim_Amnt = db.Column(db.String(60))  
+    Status = db.Column(db.String(60),default="0") 
+    def __repr__(self):
+        return '<ClaimData: {}>'.format(self.id)
+
+# claim seeder
+class ClaimDataSeeder(db.Model):
+    """
+    Create a donors table
+    """
+    __tablename__='claims_seeder'
+    id = db.Column(db.String(60), primary_key=True)
+    PATIENT_ID = db.Column(db.String(60))
+    CLAIM_ID = db.Column(db.String(60))
+    Pvd = db.Column(db.String(60))
+    CLM_Start_DT = db.Column(db.String(60))
+    CLM_End_DT = db.Column(db.String(60))
+    Diagnosis = db.Column(db.String(60))
+    ICD10_Diagnosis = db.Column(db.String(60))
+    Claim_Amnt = db.Column(db.String(60))  
+    Status = db.Column(db.String(60),default="0") 
+    def __repr__(self):
+        return '<ClaimDataSeeder: {}>'.format(self.id)
